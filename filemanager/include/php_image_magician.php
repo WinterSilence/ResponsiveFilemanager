@@ -229,7 +229,6 @@ class imageLib {
 		// *** Open up the file
 		$this->image = $this->openImage($fileName);
 
-
 		// *** Assign here so we don't modify the original
 		$this->imageResized = $this->image;
 
@@ -2719,25 +2718,31 @@ class imageLib {
 			}
 		};
 
-		// *** Get extension
-		$extension = strrchr($file, '.');
+		// *** Get extension / image type
+		$extension = mime_content_type($file);
 		$extension = fix_strtolower($extension);
+		$extension = str_replace('image/', '', $extension);
 		switch ($extension)
 		{
-			case '.jpg':
-			case '.jpeg':
+			case 'jpg':
+			case 'jpeg':
 				$img = @imagecreatefromjpeg($file);
 				break;
-			case '.gif':
+			case 'webp':
+				$img = @\imagecreatefromwebp($file);
+				break;
+			case 'gif':
 				$img = @imagecreatefromgif($file);
 				break;
-			case '.png':
+			case 'png':
 				$img = @imagecreatefrompng($file);
 				break;
-			case '.bmp':
+			case 'bmp':
+			case 'x-ms-bmp':
 				$img = @$this->imagecreatefrombmp($file);
 				break;
-			case '.psd':
+			case 'psd':
+			case 'vnd.adobe.photoshop':
 				$img = @$this->imagecreatefrompsd($file);
 				break;
 
@@ -2779,6 +2784,7 @@ class imageLib {
 		# Reference:
 		# Notes:    * gif doesn't have a quality parameter
 		#       * jpg has a quality setting 0-100 (100 being the best)
+		#       * webp has a quality setting 0-100 (100 being the best)
 		#       * png has a quality setting 0-9 (0 being the best)
 		#
 		#             * bmp files have no native support for bmp files. We use a
@@ -2829,6 +2835,17 @@ class imageLib {
 				else
 				{
 					$error = 'jpg';
+				}
+				break;
+
+			case '.webp':
+				if (imagetypes() & IMG_WEBP)
+				{
+					imagewebp($this->imageResized, $savePath, $imageQuality);
+				}
+				else
+				{
+					$error = 'webp';
 				}
 				break;
 
@@ -2915,6 +2932,10 @@ class imageLib {
 			case 'jpeg':
 				header('Content-type: image/jpeg');
 				imagejpeg($this->imageResized, '', $imageQuality);
+				break;
+			case 'webp':
+				header('Content-type: image/webp');
+				imagewebp($this->imageResized, '', $imageQuality);
 				break;
 			case 'gif':
 				header('Content-type: image/gif');

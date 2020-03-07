@@ -1,6 +1,139 @@
 Responsive Filemanager Changelog 
 
 *********************************************************
+*  RFM 9.14.0
+*********************************************************
+- add support to tinymce 5 (thanks to mikolaj pich)
+- change image editor to Toast UI Image Editor (thanks to jack denning)
+- fix Critical Security (thanks to Fariskhi Vidyan for reporting)
+- add ckEditor on html file edit
+- update context menu (thanks to joshua schmidtke)
+- fix upload an image with malicius code inside
+- added compatibility with memory_limit expressed in G
+- fix relative url return
+- fix error on file duplication
+- fix error with memory usage (thanks to tim mclaughlin)
+- fix a vulnerability on url upload (thanks to donot-wong for reporting)
+- fix return on upload in same cases
+- other fixes (thanks to all for reporting)
+
+*********************************************************
+*  RFM 9.13.4
+*********************************************************
+- fix Directory Traversal Allows to Read Any File (thanks to Simon Uvarov for reporting)
+- fix Path Traversal While Upacking Archives (thanks to Simon Uvarov for reporting)
+- Fix foreach warning on URL upload
+- Fix http https URL upload
+- add toggle on config for extract_files
+- prevent image creation for broken links in URL upload (thanks to davodavodavo3)
+- Migrate to yarn on development (thanks to mklkj)
+- code refactoring
+
+
+
+*********************************************************
+*  RFM 9.13.3
+*********************************************************
+- support to files without extension
+- fix Path Traversal vulnerability and url validation
+- fix vulnerability that permits to see server files
+- fix double file and folder rename
+- refactoring
+- update Hungarian, German and Thai languages
+- fix nested php tags in download permission
+- change jPlayer script to cdn
+
+
+*********************************************************
+*  RFM 9.13.2
+*********************************************************
+- empty filename support (like .htaccess, .env,...)
+- fix download bug
+- refactoring check extension
+
+
+*********************************************************
+*  RFM 9.13.1
+*********************************************************
+- folder creation fix
+- blacklist fix
+- php < 5.6 compatibility fix
+
+*********************************************************
+*  RFM 9.13.0
+*********************************************************
+- multiple file selection: you can delete multiple files, you can select multiple file (n.b. if you select multiple files on stand alone mode it return a json list of urls, if you use editor with normal mode return only the first and if you use tinymce with responsivefilemanager plugin return all files on editor)
+- you can disable mime type renaming on config
+- blacklist extensions available on config
+- fixed precompiled test on duplication
+- rfm remember the last folder when return to filemanager
+- added mime type .rar
+- fixed folder permission to get config value
+- fixed an error on folder renaming
+- a lot of others bugs fixed
+
+
+*********************************************************
+*  RFM 9.12.2
+*********************************************************
+- fixed a security vulnerability (thanks to sashaptrw)
+- fixed other minor problems
+
+*********************************************************
+*  RFM 9.12.1
+*********************************************************
+- fix FTP support
+- fix problem with subfolder session
+
+*********************************************************
+*  RFM 9.12.0
+*********************************************************
+- fixed multiple security vulnerabilities (thanks to Ryan Dewhurst - BSc Ethical Hacking for Computer Security, CCNA)
+- fixed lazy loading problems with a new plugin
+- copy url without flash with clipboard.js
+- removed java uploader and introduce new upload system with canucks part
+- new upload method with jQuery-File-Upload
+- removed viewer_js and substituted with google preview
+- fix problem with url upload
+- multiple files, folder upload permission also WITH RECURSIVE FOLDER UPLOAD
+- fix the config.php inclusion on subfolders see CUSTOMISE CONFIGURATION FOR EACH FOLDER on documentation
+- RTL stylesheet on repository (if you want to use simply include on dialog.php)
+- you can now drop files/folders everywhere to upload
+
+*********************************************************
+*  RFM 9.11.3
+*********************************************************
+- fixed multiple security vulnerabilities (thanks to Wiswat Aswamenakul (Nick))
+- url upload toggle
+- fixed upload xml
+- prettify improvement
+- added cad preview
+- other minor bug fixes
+
+*********************************************************
+*  RFM 9.11.0
+*********************************************************
+- fixed multiple security vulnerabilities (thanks to CERT-W and Davide Girardi from Outpost24)
+- Add FTP beta support
+- Upload from URL
+- Add watermark on images
+- fixed problem with some file type on upload
+- fixed a problem with change language
+- fixed a problem with rename
+- fixed a problem with upload mine type
+- fixed memory_error bool indicator
+- add configuration to add &time to image to prevent chaching
+- other fixes
+
+*********************************************************
+*  RFM 9.10.2
+*********************************************************
+- fixed Download of large file
+- added pause resume download
+- fixed problem with base_url function
+- removed set_time_limit call
+
+*********************************************************
 *  RFM 9.10.1
 *********************************************************
 - now you can pass available extensions list in url (ex. you can show only excel files)
